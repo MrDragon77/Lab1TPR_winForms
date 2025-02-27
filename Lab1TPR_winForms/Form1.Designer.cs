@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            button1 = new Button();
+            button_StartModelling = new Button();
             textBox_strategyNum = new TextBox();
             textBox_conditionNum = new TextBox();
             label2 = new Label();
-            textBox3 = new TextBox();
+            textBox_stepNum = new TextBox();
             label3 = new Label();
-            button2 = new Button();
+            button_EditMatrix = new Button();
             button_LoadFromFile = new Button();
             button_SaveToFile = new Button();
             textBox_saveName = new TextBox();
@@ -50,15 +50,15 @@
             label1.TabIndex = 0;
             label1.Text = "Количество стратегий";
             // 
-            // button1
+            // button_StartModelling
             // 
-            button1.Location = new Point(448, 278);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(189, 22);
-            button1.TabIndex = 1;
-            button1.Text = "Начать моделирование";
-            button1.UseVisualStyleBackColor = true;
+            button_StartModelling.Location = new Point(448, 278);
+            button_StartModelling.Margin = new Padding(3, 2, 3, 2);
+            button_StartModelling.Name = "button_StartModelling";
+            button_StartModelling.Size = new Size(189, 22);
+            button_StartModelling.TabIndex = 1;
+            button_StartModelling.Text = "Начать моделирование";
+            button_StartModelling.UseVisualStyleBackColor = true;
             // 
             // textBox_strategyNum
             // 
@@ -85,13 +85,13 @@
             label2.TabIndex = 3;
             label2.Text = "Количество состояний";
             // 
-            // textBox3
+            // textBox_stepNum
             // 
-            textBox3.Location = new Point(247, 276);
-            textBox3.Margin = new Padding(3, 2, 3, 2);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(110, 23);
-            textBox3.TabIndex = 6;
+            textBox_stepNum.Location = new Point(247, 276);
+            textBox_stepNum.Margin = new Padding(3, 2, 3, 2);
+            textBox_stepNum.Name = "textBox_stepNum";
+            textBox_stepNum.Size = new Size(110, 23);
+            textBox_stepNum.TabIndex = 6;
             // 
             // label3
             // 
@@ -102,16 +102,16 @@
             label3.TabIndex = 5;
             label3.Text = "Количество шагов моделирования";
             // 
-            // button2
+            // button_EditMatrix
             // 
-            button2.Location = new Point(74, 158);
-            button2.Margin = new Padding(3, 2, 3, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(257, 22);
-            button2.TabIndex = 7;
-            button2.Text = "Редактировать матрицу вероятностей";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            button_EditMatrix.Location = new Point(74, 158);
+            button_EditMatrix.Margin = new Padding(3, 2, 3, 2);
+            button_EditMatrix.Name = "button_EditMatrix";
+            button_EditMatrix.Size = new Size(257, 22);
+            button_EditMatrix.TabIndex = 7;
+            button_EditMatrix.Text = "Редактировать матрицу вероятностей";
+            button_EditMatrix.UseVisualStyleBackColor = true;
+            button_EditMatrix.Click += button2_Click;
             // 
             // button_LoadFromFile
             // 
@@ -151,13 +151,13 @@
             Controls.Add(textBox_saveName);
             Controls.Add(button_SaveToFile);
             Controls.Add(button_LoadFromFile);
-            Controls.Add(button2);
-            Controls.Add(textBox3);
+            Controls.Add(button_EditMatrix);
+            Controls.Add(textBox_stepNum);
             Controls.Add(label3);
             Controls.Add(textBox_conditionNum);
             Controls.Add(label2);
             Controls.Add(textBox_strategyNum);
-            Controls.Add(button1);
+            Controls.Add(button_StartModelling);
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
@@ -170,13 +170,13 @@
         #endregion
 
         private Label label1;
-        private Button button1;
+        private Button button_StartModelling;
         private TextBox textBox_strategyNum;
         private TextBox textBox_conditionNum;
         private Label label2;
-        private TextBox textBox3;
+        private TextBox textBox_stepNum;
         private Label label3;
-        private Button button2;
+        private Button button_EditMatrix;
         private Button button_LoadFromFile;
         private Button button_SaveToFile;
         private TextBox textBox_saveName;

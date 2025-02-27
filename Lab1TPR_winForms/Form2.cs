@@ -18,15 +18,20 @@ namespace Lab1TPR_winForms
             InitializeComponent();
             datasetTemp = new DataSet();
         }
-        public Form2(DataSet dataset)
+        public Form2(DataSet dataset, int strategyNum)
         {
             InitializeComponent();
             this.datasetTemp = dataset;
+            numericUpDown_tableID.Maximum = strategyNum;
+            numericUpDown_tableID.Minimum = 1;
         }
 
         private void numericUpDown_tableID_ValueChanged(object sender, EventArgs e)
         {
-
+            dataGridView_strategy.DataSource = datasetTemp.Tables["s" + numericUpDown_tableID.Value.ToString()];
+            dataGridView_dohod.DataSource = datasetTemp.Tables["d" + numericUpDown_tableID.Value.ToString()];
+            dataGridView_strategy.Update();
+            dataGridView_dohod.Update();
         }
 
         private void Form2_Load(object sender, EventArgs e)
