@@ -52,10 +52,10 @@
             // 
             // button_StartModelling
             // 
-            button_StartModelling.Location = new Point(448, 278);
+            button_StartModelling.Location = new Point(448, 270);
             button_StartModelling.Margin = new Padding(3, 2, 3, 2);
             button_StartModelling.Name = "button_StartModelling";
-            button_StartModelling.Size = new Size(189, 22);
+            button_StartModelling.Size = new Size(189, 33);
             button_StartModelling.TabIndex = 1;
             button_StartModelling.Text = "Начать моделирование";
             button_StartModelling.UseVisualStyleBackColor = true;
@@ -87,7 +87,7 @@
             // 
             // textBox_stepNum
             // 
-            textBox_stepNum.Location = new Point(247, 276);
+            textBox_stepNum.Location = new Point(226, 276);
             textBox_stepNum.Margin = new Padding(3, 2, 3, 2);
             textBox_stepNum.Name = "textBox_stepNum";
             textBox_stepNum.Size = new Size(110, 23);
@@ -104,10 +104,10 @@
             // 
             // button_EditMatrix
             // 
-            button_EditMatrix.Location = new Point(74, 158);
+            button_EditMatrix.Location = new Point(54, 153);
             button_EditMatrix.Margin = new Padding(3, 2, 3, 2);
             button_EditMatrix.Name = "button_EditMatrix";
-            button_EditMatrix.Size = new Size(257, 22);
+            button_EditMatrix.Size = new Size(257, 35);
             button_EditMatrix.TabIndex = 7;
             button_EditMatrix.Text = "Редактировать матрицу вероятностей";
             button_EditMatrix.UseVisualStyleBackColor = true;
