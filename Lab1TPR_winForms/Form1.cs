@@ -89,43 +89,48 @@ namespace Lab1TPR_winForms
         private void buttonSave_Click(object sender, EventArgs e)
         {
             string saveName = textBox_saveName.Text + ".xml";
+            if (textBox_saveName.Text == "")
+            {
+                MessageBox.Show("Напишите имя файла");
+                return;
+            }
             if (File.Exists(saveName))
             {
                 MessageBox.Show("Файл с таким именем уже существует");
+                return;
             }
-            else
+            if(dataset.Tables.Contains("state"))
             {
-                DataTable stateTable = new DataTable("state"); //название технической таблицы state
-                stateTable.Columns.Add("strategyNum", typeof(int));
-                stateTable.Columns.Add("conditionNum", typeof(int));
-                stateTable.Columns.Add("stepNum", typeof(int));
-                stateTable.Rows.Add(savedStrategyNum, savedConditionNum, Decimal.ToInt32(nud_StepNum.Value));
-                dataset.Tables.Add(stateTable);
-                dataset.WriteXml(saveName);
-                MessageBox.Show("Файл сохранен");
+                dataset.Tables.Remove("state");
             }
+            DataTable stateTable = new DataTable("state"); //название технической таблицы state
+            stateTable.Columns.Add("strategyNum", typeof(int));
+            stateTable.Columns.Add("conditionNum", typeof(int));
+            stateTable.Columns.Add("stepNum", typeof(int));
+            stateTable.Rows.Add(savedStrategyNum, savedConditionNum, Decimal.ToInt32(nud_StepNum.Value));
+            dataset.Tables.Add(stateTable);
+            dataset.WriteXml(saveName);
+            MessageBox.Show("Файл сохранен");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             string openName = textBox_saveName.Text + ".xml";
-            if (File.Exists(openName))
-            {
-                dataset = new DataSet();
-                dataset.ReadXml(openName);
-                DataTable stateTable = dataset.Tables["state"];
-                textBox_strategyNum.Text = stateTable.Rows[0]["strategyNum"].ToString();
-                savedStrategyNum = Int32.Parse(stateTable.Rows[0]["strategyNum"].ToString());
-                textBox_conditionNum.Text = stateTable.Rows[0]["conditionNum"].ToString();
-                savedConditionNum = Int32.Parse(stateTable.Rows[0]["conditionNum"].ToString());
-                nud_StepNum.Value = Convert.ToDecimal(stateTable.Rows[0]["stepNum"]);
-                MessageBox.Show("Файл загружен");
-                datasetCreated = true;
-            }
-            else
+            if (!File.Exists(openName))
             {
                 MessageBox.Show("Файла с таким именем нет");
+                return;
             }
+            dataset = new DataSet();
+            dataset.ReadXml(openName);
+            DataTable stateTable = dataset.Tables["state"];
+            textBox_strategyNum.Text = stateTable.Rows[0]["strategyNum"].ToString();
+            savedStrategyNum = Int32.Parse(stateTable.Rows[0]["strategyNum"].ToString());
+            textBox_conditionNum.Text = stateTable.Rows[0]["conditionNum"].ToString();
+            savedConditionNum = Int32.Parse(stateTable.Rows[0]["conditionNum"].ToString());
+            nud_StepNum.Value = Convert.ToDecimal(stateTable.Rows[0]["stepNum"]);
+            MessageBox.Show("Файл загружен");
+            datasetCreated = true;
 
         }
 
