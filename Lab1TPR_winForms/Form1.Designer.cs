@@ -30,8 +30,6 @@
         {
             label1 = new Label();
             button_StartModelling = new Button();
-            textBox_strategyNum = new TextBox();
-            textBox_conditionNum = new TextBox();
             label2 = new Label();
             label3 = new Label();
             button_EditMatrix = new Button();
@@ -39,7 +37,11 @@
             button_SaveToFile = new Button();
             textBox_saveName = new TextBox();
             nud_StepNum = new NumericUpDown();
+            nud_conditionNum = new NumericUpDown();
+            nud_strategyNum = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)nud_StepNum).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nud_conditionNum).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nud_strategyNum).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -60,20 +62,6 @@
             button_StartModelling.Text = "Начать моделирование";
             button_StartModelling.UseVisualStyleBackColor = true;
             button_StartModelling.Click += button_StartModelling_Click;
-            // 
-            // textBox_strategyNum
-            // 
-            textBox_strategyNum.Location = new Point(214, 45);
-            textBox_strategyNum.Name = "textBox_strategyNum";
-            textBox_strategyNum.Size = new Size(125, 27);
-            textBox_strategyNum.TabIndex = 2;
-            // 
-            // textBox_conditionNum
-            // 
-            textBox_conditionNum.Location = new Point(214, 115);
-            textBox_conditionNum.Name = "textBox_conditionNum";
-            textBox_conditionNum.Size = new Size(125, 27);
-            textBox_conditionNum.TabIndex = 4;
             // 
             // label2
             // 
@@ -139,26 +127,46 @@
             nud_StepNum.TabIndex = 11;
             nud_StepNum.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
+            // nud_conditionNum
+            // 
+            nud_conditionNum.Location = new Point(190, 117);
+            nud_conditionNum.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nud_conditionNum.Name = "nud_conditionNum";
+            nud_conditionNum.Size = new Size(97, 27);
+            nud_conditionNum.TabIndex = 12;
+            nud_conditionNum.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // nud_strategyNum
+            // 
+            nud_strategyNum.Location = new Point(190, 46);
+            nud_strategyNum.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nud_strategyNum.Name = "nud_strategyNum";
+            nud_strategyNum.Size = new Size(97, 27);
+            nud_strategyNum.TabIndex = 13;
+            nud_strategyNum.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(873, 571);
+            Controls.Add(nud_strategyNum);
+            Controls.Add(nud_conditionNum);
             Controls.Add(nud_StepNum);
             Controls.Add(textBox_saveName);
             Controls.Add(button_SaveToFile);
             Controls.Add(button_LoadFromFile);
             Controls.Add(button_EditMatrix);
             Controls.Add(label3);
-            Controls.Add(textBox_conditionNum);
             Controls.Add(label2);
-            Controls.Add(textBox_strategyNum);
             Controls.Add(button_StartModelling);
             Controls.Add(label1);
             Name = "Form1";
             Text = "Ввод параметров модуляции";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)nud_StepNum).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nud_conditionNum).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nud_strategyNum).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -167,8 +175,6 @@
 
         private Label label1;
         private Button button_StartModelling;
-        private TextBox textBox_strategyNum;
-        private TextBox textBox_conditionNum;
         private Label label2;
         private Label label3;
         private Button button_EditMatrix;
@@ -176,5 +182,7 @@
         private Button button_SaveToFile;
         private TextBox textBox_saveName;
         private NumericUpDown nud_StepNum;
+        private NumericUpDown nud_conditionNum;
+        private NumericUpDown nud_strategyNum;
     }
 }

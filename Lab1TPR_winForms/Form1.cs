@@ -31,13 +31,13 @@ namespace Lab1TPR_winForms
             }
             else
             {
-                if (savedStrategyNum != Int32.Parse(textBox_strategyNum.Text) || savedConditionNum != Int32.Parse(textBox_conditionNum.Text))
+                if (savedStrategyNum != Decimal.ToInt32(nud_strategyNum.Value) || savedConditionNum != Decimal.ToInt32(nud_conditionNum.Value))
                 {
                     DialogResult result = MessageBox.Show("В кеше уже есть сохраненная матрица. \nДа - загрузить ее из кеша.\nНет - Создать новую матрицу", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        textBox_strategyNum.Text = savedStrategyNum.ToString();
-                        textBox_conditionNum.Text = savedConditionNum.ToString();
+                        nud_strategyNum.Value = Convert.ToDecimal(savedStrategyNum);
+                        nud_conditionNum.Value = Convert.ToDecimal(savedConditionNum);
                         isNeedToCreateDataset = false;
                     }
                     else if (result == DialogResult.No)
@@ -49,8 +49,8 @@ namespace Lab1TPR_winForms
 
             if (isNeedToCreateDataset)
             {
-                int strategyNum = Int32.Parse(textBox_strategyNum.Text);
-                int conditionNum = Int32.Parse(textBox_conditionNum.Text);
+                int strategyNum = Decimal.ToInt32(nud_strategyNum.Value);
+                int conditionNum = Decimal.ToInt32(nud_conditionNum.Value);
                 savedStrategyNum = strategyNum;
                 savedConditionNum = conditionNum;
                 dataset = new DataSet();
@@ -99,7 +99,7 @@ namespace Lab1TPR_winForms
                 MessageBox.Show("Файл с таким именем уже существует");
                 return;
             }
-            if(dataset.Tables.Contains("state"))
+            if (dataset.Tables.Contains("state"))
             {
                 dataset.Tables.Remove("state");
             }
@@ -124,9 +124,9 @@ namespace Lab1TPR_winForms
             dataset = new DataSet();
             dataset.ReadXml(openName);
             DataTable stateTable = dataset.Tables["state"];
-            textBox_strategyNum.Text = stateTable.Rows[0]["strategyNum"].ToString();
+            nud_strategyNum.Value = Convert.ToDecimal(stateTable.Rows[0]["strategyNum"]);
             savedStrategyNum = Int32.Parse(stateTable.Rows[0]["strategyNum"].ToString());
-            textBox_conditionNum.Text = stateTable.Rows[0]["conditionNum"].ToString();
+            nud_conditionNum.Value = Convert.ToDecimal(stateTable.Rows[0]["conditionNum"]);
             savedConditionNum = Int32.Parse(stateTable.Rows[0]["conditionNum"].ToString());
             nud_StepNum.Value = Convert.ToDecimal(stateTable.Rows[0]["stepNum"]);
             MessageBox.Show("Файл загружен");
@@ -136,6 +136,7 @@ namespace Lab1TPR_winForms
 
         private void button_StartModelling_Click(object sender, EventArgs e)
         {
+            //if
             calculator.ChangeDS(dataset);
             calculator.ChangeIterations(Decimal.ToInt32(nud_StepNum.Value));
             DataTable result = calculator.Calculate();
