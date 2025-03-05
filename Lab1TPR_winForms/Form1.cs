@@ -33,7 +33,7 @@ namespace Lab1TPR_winForms
             {
                 if (savedStrategyNum != Int32.Parse(textBox_strategyNum.Text) || savedConditionNum != Int32.Parse(textBox_conditionNum.Text))
                 {
-                    DialogResult result = MessageBox.Show("В кеше уже есть сохраненная матрица. \nДа - загрузить ее из кеша.\n Нет - Создать новую матрицу", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show("В кеше уже есть сохраненная матрица. \nДа - загрузить ее из кеша.\nНет - Создать новую матрицу", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         textBox_strategyNum.Text = savedStrategyNum.ToString();

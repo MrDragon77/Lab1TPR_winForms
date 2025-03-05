@@ -35,10 +35,14 @@ class Calculator
         }
         for (int i = 0; i < conditions * 2; i++)
         {
-            results.Rows.Add("strat" + i.ToString());
+            DataRow row = results.NewRow();
+            for(int j = 0; j < iterations; j++)
+            {
+                row[j] = 0;
+            }
+            results.Rows.Add(row);
         }
-
-        for (int n = 1; n <= iterations; n++)
+        for (int n = 0; n < iterations; n++)
         {
             double sum = 0;
             int cur_strat = 1;
@@ -56,7 +60,7 @@ class Calculator
                         Console.WriteLine(s.Rows[j][i]);
                         Console.WriteLine(d.Rows[j][i]);
                     }
-                    if (n > 1)
+                    if (n > 0)
                     {
                         for (int i = 0; i < conditions; i++)
                         {
