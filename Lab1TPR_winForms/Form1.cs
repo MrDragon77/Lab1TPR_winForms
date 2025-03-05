@@ -5,6 +5,7 @@ namespace Lab1TPR_winForms
     public partial class Form1 : Form
     {
         DataSet dataset;
+        Calculator calculator;
         bool datasetCreated = false;
         int savedStrategyNum = 0;
         int savedConditionNum = 0;
@@ -12,7 +13,7 @@ namespace Lab1TPR_winForms
         {
             InitializeComponent();
             dataset = new DataSet();
-
+            calculator = new Calculator(dataset, 1);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -20,7 +21,7 @@ namespace Lab1TPR_winForms
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonEditMarix_Click(object sender, EventArgs e)
         {
             //|| savedStrategyNums != Int32.Parse(textBox_strategyNum.Text)
             bool isNeedToCreateDataset = false;
@@ -85,7 +86,7 @@ namespace Lab1TPR_winForms
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, EventArgs e)
         {
             string saveName = textBox_saveName.Text + ".xml";
             if (File.Exists(saveName))
@@ -98,7 +99,7 @@ namespace Lab1TPR_winForms
                 stateTable.Columns.Add("strategyNum", typeof(int));
                 stateTable.Columns.Add("conditionNum", typeof(int));
                 stateTable.Columns.Add("stepNum", typeof(int));
-                stateTable.Rows.Add(savedStrategyNum, savedConditionNum, Int32.Parse(textBox_stepNum.Text));
+                stateTable.Rows.Add(savedStrategyNum, savedConditionNum, Decimal.ToInt32(nud_StepNum.Value));
                 dataset.Tables.Add(stateTable);
                 dataset.WriteXml(saveName);
                 MessageBox.Show("Файл сохранен");
@@ -117,7 +118,7 @@ namespace Lab1TPR_winForms
                 savedStrategyNum = Int32.Parse(stateTable.Rows[0]["strategyNum"].ToString());
                 textBox_conditionNum.Text = stateTable.Rows[0]["conditionNum"].ToString();
                 savedConditionNum = Int32.Parse(stateTable.Rows[0]["conditionNum"].ToString());
-                textBox_stepNum.Text = stateTable.Rows[0]["stepNum"].ToString();
+                nud_StepNum.Value = Convert.ToDecimal(stateTable.Rows[0]["stepNum"]);
                 MessageBox.Show("Файл загружен");
                 datasetCreated = true;
             }
@@ -126,6 +127,18 @@ namespace Lab1TPR_winForms
                 MessageBox.Show("Файла с таким именем нет");
             }
 
+        }
+
+        private void button_StartModelling_Click(object sender, EventArgs e)
+        {
+            calculator.ChangeDS(dataset);
+            calculator.ChangeIterations(Decimal.ToInt32(nud_StepNum.Value));
+            DataTable result = calculator.Calculate();
+            using (Form3 form2 = new Form3(result))
+            {
+                form2.ShowDialog();
+
+            }
         }
     }
 }

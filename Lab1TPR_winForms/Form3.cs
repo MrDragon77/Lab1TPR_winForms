@@ -12,9 +12,21 @@ namespace Lab1TPR_winForms
 {
     public partial class Form3 : Form
     {
+        public DataTable datasetResult;
         public Form3()
         {
             InitializeComponent();
+            datasetResult = new DataTable();
+        }
+        public Form3(DataTable datatable)
+        {
+            InitializeComponent();
+            this.datasetResult = datatable;
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+            dataGridView_results.DataSource = datasetResult;
         }
     }
 }
