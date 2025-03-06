@@ -38,30 +38,33 @@
             dataGridView_results.AllowUserToAddRows = false;
             dataGridView_results.AllowUserToDeleteRows = false;
             dataGridView_results.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_results.Location = new Point(12, 12);
+            dataGridView_results.Location = new Point(23, 339);
+            dataGridView_results.Margin = new Padding(3, 2, 3, 2);
             dataGridView_results.Name = "dataGridView_results";
             dataGridView_results.RowHeadersWidth = 51;
             dataGridView_results.RowTemplate.Height = 29;
-            dataGridView_results.Size = new Size(753, 351);
+            dataGridView_results.Size = new Size(659, 263);
             dataGridView_results.TabIndex = 2;
             // 
             // btnClose
             // 
             btnClose.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnClose.Location = new Point(637, 369);
+            btnClose.Location = new Point(557, 277);
+            btnClose.Margin = new Padding(3, 2, 3, 2);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(128, 45);
+            btnClose.Size = new Size(112, 34);
             btnClose.TabIndex = 3;
             btnClose.Text = "Назад";
             btnClose.UseVisualStyleBackColor = true;
             // 
             // Form3
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(858, 481);
+            ClientSize = new Size(982, 707);
             Controls.Add(btnClose);
             Controls.Add(dataGridView_results);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form3";
             Text = "Результаты моделирования";
             Load += Form3_Load;

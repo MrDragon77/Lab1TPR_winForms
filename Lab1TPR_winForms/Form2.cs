@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConjTable.Demo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,6 +55,14 @@ namespace Lab1TPR_winForms
         private void dataGridView_dohod_SelectionChanged(object sender, EventArgs e)
         {
             dataGridView_dohod.Update();
+        }
+
+        private void button_Graph_Click(object sender, EventArgs e)
+        {
+
+            //Application.Run(new MainForm(datasetTemp.Tables["s" + numericUpDown_tableID.Value.ToString()]));
+            MainForm GraphForm = new MainForm(datasetTemp.Tables["s" + numericUpDown_tableID.Value.ToString()]);
+            GraphForm.ShowDialog();
         }
     }
 }
